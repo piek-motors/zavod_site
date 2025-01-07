@@ -1,0 +1,17 @@
+node_modules
+.git
+.gitignore
+*.md
+dist
+test
+**/node_modules
+**/dist
+**/test
+.idea
+*.log
+*.spec.ts
+*.test.ts
+.next
+.source
+deploy.sh
+Dockerfile

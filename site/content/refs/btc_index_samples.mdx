@@ -1,0 +1,34 @@
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+import * as r from './btc-index-responces';
+import { CurlReq, Resp } from './common.mdx';
+
+<Accordions>
+  <Accordion title="getAddressInformation" id="getAddressInformation">
+    Provides a detailed summary of information related to the specified address.
+    <TypeTable
+      type={{
+        "limit": {
+          description: '(optional) maximum number of transactions to return',
+          type: 'string',
+        },
+        "offset": {
+          description: '(optional) offset of transactions to return',
+          type: 'string',
+        },
+        "sort": {
+          description: "(optional) Sorting direction for transactions ('desc'=new first, 'asc'=old first)",
+          type: 'string',
+        },
+      }}
+    />
+    <CurlReq>
+    ```bash
+    curl https://api.chain-rpc.online/bitcoin-index/address/34rng4QwB5pHUbGDJw1JxjLwgEU8TQuEqv \
+      -H "X-API-Key: test"
+    ```
+    </CurlReq>
+    <Resp json={r.getAddressInformation}/>
+  </Accordion>
+</Accordions>

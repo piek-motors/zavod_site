@@ -1,0 +1,164 @@
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+import * as r from '../refs/ton-responces';
+import { Resp } from './common.mdx';
+
+<Accordions>
+
+<Accordion title="getAddressInformation" id="getAddressInformation">
+Get basic information about the address: balance, code, data, last_transaction_id.
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) account address (wallet or contract)',
+      type: 'string',
+    },
+  }}
+/>
+<Resp json={r.getAddressInformation}/>
+</Accordion>
+
+<Accordion title="getExtendedAddressInformation" id="getExtendedAddressInformation">
+Similar to previous one but tries to parse additional information for known contract types. This method is based on tonlib's function getAccountState. For detecting wallets we recommend to use getWalletInformation.
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) account address (wallet or contract)',
+      type: 'string',
+    },
+  }}
+/>
+<Resp json={r.getExtendedAddressInformation}/>
+</Accordion>
+
+<Accordion title="getWalletInformation" id="getWalletInformation">
+This method parses contract state and currently supports more wallet types than getExtendedAddressInformation: simple wallet, standart wallet, v3 wallet, v4 wallet.
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) account address (wallet or contract)',
+      type: 'string',
+    },
+  }}
+/>
+<Resp json={r.getWalletInformation}/>
+</Accordion>
+
+<Accordion title="getTransactions" id="getTransactions">
+Get transaction history of a given address.
+
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) account address (wallet or contract)',
+      type: 'string',
+    },
+    limit: {
+      description: '(optional) max number of transactions to return',
+      type: 'number',
+      default: 10,
+    },
+    lt: {
+      description: '(optional) Logical time of transaction to start with, must be sent with hash.',
+      type: 'integer',
+    },
+    hash: {
+      description: '(optional) Hash of transaction to start with, in base64 or hex encoding , must be sent with lt.',
+      type: 'string',
+    },
+    to_lt: {
+      description: '(optional) Logical time of transaction to finish with (to get tx from lt to to_lt).',
+      type: 'integer',
+      default: 0,
+    },
+    archival: {
+      description: '(optional) By default getTransaction request is processed by any available liteserver. If archival=true only liteservers with full history are used.',
+      type: 'boolean',
+      default: false,
+    }
+  }}
+/>
+<Resp json={r.getTransactions}/>
+</Accordion>
+
+<Accordion title="getAddressBalance" id="getAddressBalance">
+Get balance (in nanotons) of a given address.
+
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) account address (wallet or contract)',
+      type: 'string',
+    },
+  }}
+/>
+<Resp json={r.getAddressBalance}/>
+</Accordion>
+
+<Accordion title="getAddressState" id="getAddressState">
+Get state of a given address. State can be either unitialized, active or frozen.
+
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) account address (wallet or contract)',
+      type: 'string',
+    },
+  }}
+/>
+<Resp json={r.getAddressState}/>
+</Accordion>
+
+<Accordion title="packAddress" id="packAddress">
+Convert an address from raw to human-readable format.
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) account address (wallet or contract)',
+      type: 'string',
+    },
+  }}
+/>
+<Resp json={r.packAddress}/>
+</Accordion>
+
+<Accordion title="unpackAddress" id="unpackAddress">
+Convert an address from human-readable to raw format.
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) account address (wallet or contract)',
+      type: 'string',
+    },
+  }}
+/>
+<Resp json={r.unpackAddress}/>
+</Accordion>
+
+<Accordion title="getTokenData" id="getTokenData">
+Get NFT or Jetton information.
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) Address of NFT collection/item or Jetton master/wallet smart contract',
+      type: 'string',
+    },
+  }}
+/>
+</Accordion>
+
+<Accordion title="detectAddress" id="detectAddress">  
+Get all possible address forms.
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) Identifier of target TON account in any form.',
+      type: 'string',
+    },
+  }}
+/>
+<Resp json={r.detectAddress}/>
+</Accordion>
+
+</Accordions>

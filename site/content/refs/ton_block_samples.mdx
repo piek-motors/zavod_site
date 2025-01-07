@@ -1,0 +1,51 @@
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+import * as r from '../refs/ton-responces';
+import { Resp } from './common.mdx';
+
+<Accordions>
+
+<Accordion title="getMasterchainInfo" id="getMasterchainInfo">
+Get information about the masterchain.
+<Resp json={r.getMasterchainInfo}/>
+</Accordion>
+
+<Accordion title="getMasterchainBlockSignatures" id="getMasterchainBlockSignatures">
+Get up-to-date masterchain state.
+<TypeTable
+  type={{
+    "seqno (required)": {
+      type: 'integer',
+    },
+  }}
+/>
+<Resp json={r.getMasterchainBlockSignatures}/>
+</Accordion>
+
+<Accordion title="getShardBlockProof" id="getShardBlockProof">
+Get merkle proof of shardchain block.
+<TypeTable
+  type={{
+    "workchain (required)": {
+      description: "Block workchain id",
+      type: 'integer',
+    },
+    "shard (required)": {
+      description: "Block shard id",
+      type: 'integer',
+    },
+    "seqno (required)": {
+      description: "Block seqno",
+      type: 'integer',
+    },
+    from_seqno: {
+      description: "Seqno of masterchain block starting from which proof is required. If not specified latest masterchain block is used",
+      type: 'integer',
+    },
+  }}
+/>
+<Resp json={r.getShardBlockProof}/>
+</Accordion>
+
+</Accordions>

@@ -1,0 +1,18 @@
+---
+title: Avalanche Node RPC
+description: Avalanche is a high-performance blockchain platform designed for fast, low-cost, and eco-friendly decentralized applications (dApps) and enterprise solutions.
+  Its unique Avalanche consensus protocol enables near-instant finality, scalability for thousands of transactions per second, and interoperability across subnets. 
+  Key features include customizable blockchains, seamless asset tokenization and EVM compatibility.
+---
+JSON RPC Endpoint: https://api.chain-rpc.online/avalanche \
+
+curl example
+```bash
+curl https://api.chain-rpc.online/avalanche \
+  -X POST -H "Content-Type: application/json" \
+  -H "X-API-Key: test" \
+  -d '{ "jsonrpc": "2.0", "id": 1,
+    "method": "eth_blockNumber",
+    "params": []
+}'
+```

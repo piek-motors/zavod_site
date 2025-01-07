@@ -1,0 +1,45 @@
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+import * as r from '../refs/ton-responces';
+import { Resp } from './common.mdx';
+
+<Accordions>
+
+<Accordion title="getTransactions" id="getTransactions">
+Get transaction history of a given address.
+
+<TypeTable
+  type={{
+    "address (required)": {
+      description: '(required) account address (wallet or contract)',
+      type: 'string',
+    },
+    limit: {
+      description: '(optional) max number of transactions to return',
+      type: 'number',
+      default: 10,
+    },
+    lt: {
+      description: '(optional) Logical time of transaction to start with, must be sent with hash.',
+      type: 'integer',
+    },
+    hash: {
+      description: '(optional) Hash of transaction to start with, in base64 or hex encoding , must be sent with lt.',
+      type: 'string',
+    },
+    to_lt: {
+      description: '(optional) Logical time of transaction to finish with (to get tx from lt to to_lt).',
+      type: 'integer',
+      default: 0,
+    },
+    archival: {
+      description: '(optional) By default getTransaction request is processed by any available liteserver. If archival=true only liteservers with full history are used.',
+      type: 'boolean',
+      default: false,
+    }
+  }}
+/>
+<Resp json={r.getTransactions}/>
+</Accordion>
+</Accordions>

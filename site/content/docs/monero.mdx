@@ -1,0 +1,20 @@
+---
+title: Monero Node RPC
+description: Monero is a privacy-focused blockchain offering untraceable transactions using advanced cryptographic techniques like Ring Signatures and Stealth Addresses. 
+  Its emphasis on fungibility, decentralization, and user anonymity makes it a leading choice for secure digital payments.
+---
+JSON RPC Endpoint: https://api.chain-rpc.online/monero
+
+<b>curl example</b> \
+```bash
+curl https://api.chain-rpc.online/monero \
+  -X POST -H "Content-Type: application/json" \
+  -H "X-API-Key: test" \
+  -d '{ 
+    "jsonrpc": "2.0", "id": 1,
+    "method": "get_info"
+}'
+```
+
+**Refferences** \
+[JSON-RPC doc](https://docs.getmonero.org/rpc-library/monerod-rpc)
