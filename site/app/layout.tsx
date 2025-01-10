@@ -1,5 +1,4 @@
-import { RootProvider } from 'fumadocs-ui/provider'
-import 'fumadocs-ui/style.css'
+import Header from '@/lib/components/header'
 import type { ReactNode } from 'react'
 import ThemeRegistry from './theme-registry'
 
@@ -36,17 +35,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           minHeight: '100vh',
         }}
       >
+        <Header/>
         <ThemeRegistry options={{ key: 'joy' }}>
-          <RootProvider
-            theme={{
-              enableSystem: false,
-              enabled: false,
-              attribute: 'data-theme',
-              enableColorScheme: true,
-            }}
-          >
             {children}
-          </RootProvider>
         </ThemeRegistry>
       </body>
     </html>

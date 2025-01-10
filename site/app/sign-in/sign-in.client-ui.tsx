@@ -3,7 +3,6 @@ import { Footer } from '@/lib/footer'
 import MetaMaskIcon from '@/lib/metamask-icon'
 import Box from '@mui/joy/Box'
 import Button from '@mui/joy/Button'
-import Link from '@mui/joy/Link'
 import Stack from '@mui/joy/Stack'
 import Typography from '@mui/joy/Typography'
 import { useRouter } from 'next/navigation'
@@ -153,17 +152,6 @@ export default function SignInClientUI() {
             px: 2,
           }}
         >
-          <Box
-            component="header"
-            sx={{ py: 2, display: 'flex', justifyContent: 'space-between' }}
-          >
-            <Box sx={{ p: 1, display: 'flex', alignItems: 'center' }}>
-              <Link href="/" sx={{ display: 'flex', gap: 2 }}>
-                <img src="/logo.png" alt="ChainRPC Logo" width="50" />
-                <b>Home</b>
-              </Link>
-            </Box>
-          </Box>
           <Box
             component="main"
             sx={{

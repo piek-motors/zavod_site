@@ -1,7 +1,7 @@
 'use server'
 import { isAuthenticated, logoutAndDeleteToken } from '@/lib/dal'
 import { Box, Button, Container, Divider, Typography } from '@mui/joy'
-import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock'
+
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
@@ -57,9 +57,7 @@ export default async function Dashboard() {
             blockchain nodes.
           </Typography>
 
-          <CodeBlock>
-            <Pre>{session?.apiKey.api_key}</Pre>
-          </CodeBlock>
+            <Box>{session?.apiKey.api_key}</Box>
 
           <Typography gutterBottom>
             You must include this API key in the header of every request you
@@ -67,8 +65,8 @@ export default async function Dashboard() {
             using the API key:
           </Typography>
 
-          <CodeBlock lang="bash">
-            <Pre>
+          <Box lang="bash">
+            <Box>
               {`
 curl https://api.chain-rpc.online/bitcoin \\
   -X POST -H "Content-Type: application/json" \\
@@ -78,8 +76,8 @@ curl https://api.chain-rpc.online/bitcoin \\
     "params": []
 }'
               `}
-            </Pre>
-          </CodeBlock>
+            </Box>
+          </Box>
           <Divider />
           <Typography level="body-xs" color="danger" gutterBottom mt={3}>
             Warning: Never share your API key in public or include it in

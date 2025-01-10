@@ -1,13 +1,24 @@
 // app/ThemeRegistry.tsx
-'use client'
-import createCache from '@emotion/cache'
-import { CacheProvider } from '@emotion/react'
-import { CssBaseline } from '@mui/joy'
-import { CssVarsProvider, extendTheme } from '@mui/joy/styles'
-import { useServerInsertedHTML } from 'next/navigation'
-import React from 'react'
+"use client"
+import createCache from "@emotion/cache"
+import { CacheProvider } from "@emotion/react"
+import { CssBaseline } from "@mui/joy"
+import { CssVarsProvider, extendTheme } from "@mui/joy/styles"
+import { useServerInsertedHTML } from "next/navigation"
+import React from "react"
 
-const baseTheme = extendTheme()
+const baseTheme = extendTheme({
+  colorSchemes: {
+    dark: {
+      palette: {
+        background: {
+          body: "#231f20",
+          surface: "#1a1717"
+        },
+      },
+    },
+  },
+})
 
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
@@ -40,14 +51,14 @@ export default function ThemeRegistry(props: any) {
     if (names.length === 0) {
       return null
     }
-    let styles = ''
+    let styles = ""
     for (const name of names) {
       styles += cache.inserted[name]
     }
     return (
       <style
         key={cache.key}
-        data-emotion={`${cache.key} ${names.join(' ')}`}
+        data-emotion={`${cache.key} ${names.join(" ")}`}
         dangerouslySetInnerHTML={{
           __html: styles,
         }}
@@ -58,9 +69,8 @@ export default function ThemeRegistry(props: any) {
   return (
     <CacheProvider value={cache}>
       <CssVarsProvider
-        defaultMode="light"
+        defaultMode="dark"
         theme={baseTheme}
-        // attribute="data-theme"
         disableNestedContext
       >
         <CssBaseline />

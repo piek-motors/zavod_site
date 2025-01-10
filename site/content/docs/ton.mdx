@@ -4,8 +4,6 @@ description: The Open Network (TON) API allows developers to interact with the T
   Using this API, you can query on-chain data, submit transactions, and interact with smart contracts.
   Free access to TON node RPC.
 ---
-import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
-import { TypeTable } from 'fumadocs-ui/components/type-table';
 import AccountSamples from '../refs/ton_account_samples.mdx';
 import TransactionSamples from '../refs/ton_account_tx_samples.mdx';
 import BlockSamples from '../refs/ton_block_samples.mdx';
@@ -60,7 +58,7 @@ All RPCs use the HTTP GET method.
 | getBlockHeader                 | Get metadata of a given block
 | getOutMsgQueueSizes            | Get info with current sizes of messages queues by shards
 
-<BlockSamples/>
+{/* <BlockSamples/> */}
 
 ## Account
 All RPCs use the HTTP GET method.
@@ -78,7 +76,7 @@ All RPCs use the HTTP GET method.
 | getTokenData                  | Get NFT or Jetton information
 | detectAddress                 | Get all possible address forms
 
-<AccountSamples/>
+{/* <AccountSamples/> */}
 ---
 
 ## Transaction
@@ -93,7 +91,7 @@ All RPCs use the HTTP GET method.
 | tryLocateResultTx            | Same as previous. Locate outcoming transaction of destination address by incoming message
 | tryLocateSourceTx            | Locate incoming transaction of source address by outcoming message
 
-<TransactionSamples/>
+{/* <TransactionSamples/> */}
 ---
 ## Blockchain Configuration
 All RPCs use the HTTP GET method.
@@ -109,7 +107,7 @@ All RPCs use the HTTP GET method.
 | ---------------------------- | ------------------------------------ |
 | runGetMethod (POST)          | Run get method on smart contract
 
-<Accordions>
+{/* <Accordions>
   <Accordion title="runGetMethod" id="runGetMethod">
     Run get method on smart contract.
 
@@ -134,7 +132,7 @@ All RPCs use the HTTP GET method.
         },
       }}/>
   </Accordion>
-</Accordions>
+</Accordions> */}
 
 ---
 ## Send data

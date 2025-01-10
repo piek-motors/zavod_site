@@ -17,13 +17,10 @@ export default function ContactUs() {
     <>
       <main>
         <Container>
-          {/* create a contact page with form with email and message */}
           <Box
-            minHeight="100vh"
             display="flex"
+            pt={5}
             flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
             sx={{
               maxWidth: 400,
               gap: 2,
