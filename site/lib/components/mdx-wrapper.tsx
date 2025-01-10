@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from "@mui/joy"
+import '../../app/global.css'
 
 export function MDXWrapper({
   children,

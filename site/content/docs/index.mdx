@@ -3,16 +3,30 @@ title: Chain RPC - Blockchain Node Provider as a Service
 description: ChainRPC provides reliable and efficient blockchain nodes as a service. Access TON, Bitcoin, Ethereum, and Monero networks with ease using our secure API.
 ---
 
-In order for a software application to interact with a blockchain—whether to read blockchain data 
-or send transactions to the network—it must connect to a node within the blockchain’s peer-to-peer (P2P) network. 
-To standardize this interaction, many blockchain clients implement a JSON-RPC specification, providing a consistent set of methods 
-that applications can use, regardless of the specific client or node implementation.
+import SupportedNetworks from "@/lib/components/supported-networks"
 
-### Supported Networks
+## Interacting with Blockchains
 
-| Network | RPC URL | Protocol
-| --- | --- | --- |
-| TON | https://api.chain-rpc.online/ton | JSON-RPC, REST 
-| Bitcoin | https://api.chain-rpc.online/bitcoin | JSON-RPC, REST (Index Only)
-| Ethereum | https://api.chain-rpc.online/ethereum | JSON-RPC
-| Monero | https://api.chain-rpc.online/monero | JSON-RPC
+ChainRPC makes it simple to access blockchain networks by providing reliable, secure, and scalable node infrastructure. Whether you’re developing dApps, running smart contracts, or analyzing blockchain data, our service ensures seamless connectivity to supported networks.
+
+With ChainRPC, you don’t need to worry about deploying or maintaining your own blockchain nodes. Our service allows you to interact directly with the blockchain using industry-standard RPC protocols, offering the flexibility to:
+
+- Query blockchain data, such as balances, transaction histories, and block details.
+- Send transactions and interact with smart contracts.
+- Access full or archive nodes based on your project’s requirements.
+
+**Key Features**
+
+- Reliable Node Access: High uptime and low latency to ensure uninterrupted operations.
+- Scalable Infrastructure: We combine our own dedicated hardware for shared nodes with cloud computing for fast, efficient scaling. This hybrid approach gives us better performance and cost-efficiency, enabling us to handle projects of any size, from startups to enterprise-level applications.
+- Custom Requests: We can deploy nodes for additional blockchains upon request.
+
+## Supported Networks
+
+<SupportedNetworks />
+
+## Authorization
+
+Every request must include the `x-api-key` header containing your unique API key. This key acts as your personal identifier and ensures that only authorized users can interact with the service.
+
+You can find your API key by registering with Metamask [here](/sign-in).

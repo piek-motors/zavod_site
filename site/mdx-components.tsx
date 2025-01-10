@@ -18,6 +18,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <Typography sx={{ lineHeight }}>{children}</Typography>
       </Link>
     ),
+    table: ({ children }) => <table className="md-table">{children}</table>,
     ...components,
   }
 }

@@ -1,5 +1,5 @@
+import { Footer } from "@/lib/components/footer"
 import Pricing from "@/lib/components/pricing"
-import { Footer } from "@/lib/footer"
 import { Box, Button, Container, Divider, Stack, Typography } from "@mui/joy"
 import { Metadata } from "next"
 import Link from "next/link"
