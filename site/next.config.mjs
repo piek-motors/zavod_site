@@ -1,12 +1,14 @@
-import createMDX from "@next/mdx"
-import remarkFrontmatter from 'remark-frontmatter'
-import remarkGfm from 'remark-gfm'
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import createMDX from "@next/mdx";
+import rehypeHighlight from 'rehype-highlight';
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkGfm from 'remark-gfm';
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
     jsx: true,
-    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm]
+    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
+    rehypePlugins: [rehypeHighlight]
   }
 })
 /** @type {import('next').NextConfig} */

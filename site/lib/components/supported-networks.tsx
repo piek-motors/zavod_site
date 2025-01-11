@@ -31,6 +31,9 @@ export default function SupportedNetworks() {
       <Table
         sx={{
           "--TableCell-height": "60px",
+          "th": {
+            height: "30px",
+          }
         }}
       >
         <thead>
@@ -56,7 +59,7 @@ export default function SupportedNetworks() {
               </td>
               <td>https://api.chain-rpc.online/{chain.n.toLowerCase()}</td>
               <td>
-                <a href={`/docs/${chain.n}`}>{chain.n} Details</a>
+                <a href={`/docs/${chain.n.toLowerCase()}`}>{chain.n} Details</a>
               </td>
             </tr>
           ))}

@@ -1,7 +1,11 @@
-import { generateMetadataFactory, MDXWrapper } from "@/lib/components/mdx-wrapper"
-
+import {
+  generateMetadataFactory,
+  MDXWrapper,
+} from "@/lib/components/mdx-wrapper"
+import fs from "fs"
+import path from "path"
 // Metadata setup
-export const generateMetadata = generateMetadataFactory('docs')
+export const generateMetadata = generateMetadataFactory("docs")
 
 export default async function Page({
   params,
@@ -21,7 +25,14 @@ export default async function Page({
 }
 
 export function generateStaticParams() {
-  return [{ slug: "stablecoin-risks" }]
+  // read all files in the content/docs directory
+  const files = fs.readdirSync(path.join(process.cwd(), "content/docs"))
+  const slugs = files.map((file) => file.replace(".mdx", ""))
+
+  console.log(slugs)
+
+  // return [{ slug: "stablecoin-risks" }]
+  return slugs.map((slug) => ({ slug }))
 }
 
 export const dynamicParams = false

@@ -1,5 +1,7 @@
 import { Box, Container, Typography } from "@mui/joy"
+import '../../app/github-dark.css'
 import '../../app/global.css'
+import CodeCopy from './code.copy'
 
 export function MDXWrapper({
   children,
@@ -10,9 +12,11 @@ export function MDXWrapper({
 }) {
   const { title, description, lastUpdated } = frontmatter
 
+
   return (
     <>
       <Container maxWidth="md">
+        <CodeCopy/>
         <Box my={3} mb={6}>
           <Typography sx={{ my: 2 }} level="h1">
             {title}

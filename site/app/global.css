@@ -5,9 +5,10 @@
 .md-table th {
   border-bottom: 1px solid #7d7c7c70; /* Add a thinner border for table rows */
   text-align: left;
-  padding: 5px; 
+  padding: 5px;
   font-weight: 800;
 }
+
 .md-table td {
   border-bottom: 1px solid #7d7c7c70; /* Add a thinner border for table rows */
   padding: 8px; /* Optional: Add some padding for better spacing */
