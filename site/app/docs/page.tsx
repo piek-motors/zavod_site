@@ -1,4 +1,5 @@
 import { generateMetadataFactory, MDXWrapper } from "@/lib/components/mdx-wrapper"
+import Sidenav from '@/lib/components/sidenav'
 
 // Metadata setup
 export const generateMetadata = generateMetadataFactory('docs')
@@ -14,7 +15,7 @@ export default async function Page({
   )) as any
 
   return (
-    <MDXWrapper frontmatter={frontmatter}>
+    <MDXWrapper frontmatter={frontmatter} LeftComponent={<Sidenav />}>
       <Post />
     </MDXWrapper>
   )

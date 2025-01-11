@@ -1,17 +1,13 @@
 ---
 title: TON Node RPC
-description: The Open Network (TON) API allows developers to interact with the TON blockchain network programmatically. 
-  Using this API, you can query on-chain data, submit transactions, and interact with smart contracts.
-  Free access to TON node RPC.
+description: Access the TON RPC API to interact with the blockchain, send transactions, check balances, and retrieve blocks or other critical data. Simplify integration with fast and reliable connectivity to the TON network.
 ---
-import AccountSamples from '../refs/ton_account_samples.mdx';
-import TransactionSamples from '../refs/ton_account_tx_samples.mdx';
-import BlockSamples from '../refs/ton_block_samples.mdx';
 
 JSON RPC Endpoint: https://api.chain-rpc.online/ton/jsonRPC \
 REST API Endpoint: https://api.chain-rpc.online/ton/${methodName}
 
 Basically TON node provides several protocols for communicating with the TON blockchain network:
+
 - REST API over HTTPS
 - JSON-RPC over HTTPS
 - Abstract Datagram Network Layer (ADNL) - serves as a low-level communication protocol for transmitting data between nodes and is responsible for routing messages and transactions through the decentralized network.
@@ -19,10 +15,8 @@ Basically TON node provides several protocols for communicating with the TON blo
   It operates primarily over UDP (IPv4, with future support for IPv6) and optionally falls back to TCP if UDP is unavailable.
 
 <b>curl REST API example</b>
-```bash
-curl https://api.chain-rpc.online/ton/getConsensusBlock \
-  -H "X-API-Key: test" 
-```
+```bash curl https://api.chain-rpc.online/ton/getConsensusBlock \ -H "X-API-Key:
+test" ```
 
 <b>curl JSON RPC example</b> \
 All methods in the API are available through JSON-RPC 2.0 protocol. 
@@ -40,107 +34,84 @@ curl https://api.chain-rpc.online/ton/jsonRPC \
 [Blockchain doc](https://ton-blockchain.github.io/docs)
 
 ---
+
 Below is a categorized list of TON RPC methods, each essential for interacting with and retrieving data from the TON blockchain.
 
 ## Block
+
 All RPCs use the HTTP GET method.
 
-| method                         | description                          |
-| ------------------------------ | ------------------------------------ |
-| getMasterchainInfo             | Get information about the masterchain 
-| getMasterchainBlockSignatures  | Get up-to-date masterchain state 
-| getShardBlockProof             | Get merkle proof of shardchain block 
-| getConsensusBlock              | Get consensus block and its update timestamp 
-| lookupBlock                    | Look up block by either seqno, lt or unixtime
-| shards                         | Get shards information
-| getBlockTransactions           | Get transactions of the given block
-| getBlockTransactionsExt        | Get transactions of the given block
-| getBlockHeader                 | Get metadata of a given block
-| getOutMsgQueueSizes            | Get info with current sizes of messages queues by shards
+| method                        | description                                              |
+| ----------------------------- | -------------------------------------------------------- |
+| getMasterchainInfo            | Get information about the masterchain                    |
+| getMasterchainBlockSignatures | Get up-to-date masterchain state                         |
+| getShardBlockProof            | Get merkle proof of shardchain block                     |
+| getConsensusBlock             | Get consensus block and its update timestamp             |
+| lookupBlock                   | Look up block by either seqno, lt or unixtime            |
+| shards                        | Get shards information                                   |
+| getBlockTransactions          | Get transactions of the given block                      |
+| getBlockTransactionsExt       | Get transactions of the given block                      |
+| getBlockHeader                | Get metadata of a given block                            |
+| getOutMsgQueueSizes           | Get info with current sizes of messages queues by shards |
 
 {/* <BlockSamples/> */}
 
 ## Account
+
 All RPCs use the HTTP GET method.
 
-| method                        | description                          |
-| ----------------------------- | ------------------------------------ |
-| getAddressInformation         | Get basic information about the address: balance, code, data, last_transaction_id
-| getExtendedAddressInformation | Similar to previous one but tries to parse additional information for known contract types. This method is based on tonlib's function getAccountState. For detecting wallets we recommend to use getWalletInformation
-| getWalletInformation          | This method parses contract state and currently supports more wallet types than getExtendedAddressInformation: simple wallet, standart wallet, v3 wallet, v4 wallet
-| getTransactions               | Get transaction history of a given address
-| getAddressBalance             | Get balance (in nanotons) of a given address
-| getAddressState               | Get state of a given address. State can be either unitialized, active or frozen
-| packAddress                   | Convert an address from raw to human-readable format
-| unpackAddress                 | Convert an address from human-readable to raw format
-| getTokenData                  | Get NFT or Jetton information
-| detectAddress                 | Get all possible address forms
-
-{/* <AccountSamples/> */}
----
+| method                        | description                                                                                                                                                                                                           |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| getAddressInformation         | Get basic information about the address: balance, code, data, last_transaction_id                                                                                                                                     |
+| getExtendedAddressInformation | Similar to previous one but tries to parse additional information for known contract types. This method is based on tonlib's function getAccountState. For detecting wallets we recommend to use getWalletInformation |
+| getWalletInformation          | This method parses contract state and currently supports more wallet types than getExtendedAddressInformation: simple wallet, standart wallet, v3 wallet, v4 wallet                                                   |
+| getTransactions               | Get transaction history of a given address                                                                                                                                                                            |
+| getAddressBalance             | Get balance (in nanotons) of a given address                                                                                                                                                                          |
+| getAddressState               | Get state of a given address. State can be either unitialized, active or frozen                                                                                                                                       |
+| packAddress                   | Convert an address from raw to human-readable format                                                                                                                                                                  |
+| unpackAddress                 | Convert an address from human-readable to raw format                                                                                                                                                                  |
+| getTokenData                  | Get NFT or Jetton information                                                                                                                                                                                         |
+| detectAddress                 | Get all possible address forms                                                                                                                                                                                        |
 
 ## Transaction
+
 All RPCs use the HTTP GET method.
 
-| method                       | description                          |
-| ---------------------------- | ------------------------------------ |
-| getTransactions              | Get transaction history of a given address
-| getBlockTransactions         | Get transactions of the given block
-| getBlockTransactionsExt      | Get transactions of the given block
-| tryLocateTx                  | Locate outcoming transaction of destination address by incoming message
-| tryLocateResultTx            | Same as previous. Locate outcoming transaction of destination address by incoming message
-| tryLocateSourceTx            | Locate incoming transaction of source address by outcoming message
+| method                  | description                                                                               |
+| ----------------------- | ----------------------------------------------------------------------------------------- |
+| getTransactions         | Get transaction history of a given address                                                |
+| getBlockTransactions    | Get transactions of the given block                                                       |
+| getBlockTransactionsExt | Get transactions of the given block                                                       |
+| tryLocateTx             | Locate outcoming transaction of destination address by incoming message                   |
+| tryLocateResultTx       | Same as previous. Locate outcoming transaction of destination address by incoming message |
+| tryLocateSourceTx       | Locate incoming transaction of source address by outcoming message                        |
 
-{/* <TransactionSamples/> */}
----
 ## Blockchain Configuration
+
 All RPCs use the HTTP GET method.
 
-| method                       | description                          |
-| ---------------------------- | ------------------------------------ |
-| getConfigParam               | Get config by id
-| getConfigAll                 | Get cell with full config
+| method         | description               |
+| -------------- | ------------------------- |
+| getConfigParam | Get config by id          |
+| getConfigAll   | Get cell with full config |
 
 ---
+
 ## Run smart contract get method
-| method                       | description                          |
-| ---------------------------- | ------------------------------------ |
-| runGetMethod (POST)          | Run get method on smart contract
 
-{/* <Accordions>
-  <Accordion title="runGetMethod" id="runGetMethod">
-    Run get method on smart contract.
-
-    Body params
-    <TypeTable
-      type={{
-        "address (required)": {
-          description: '(required) account address (wallet or contract)',
-          type: 'string',
-        },
-        "method (required)": {
-          description: '(required) name of the get method',
-          type: 'string',
-        },
-        "stack (required)": {
-          description: "(required) Array of stack elements: [['num',3], ['cell', cell_object], ['slice', slice_object]]",
-          type: 'array',
-        },
-        "seqno": {
-          description: '(optional) Seqno of masterchain block at which moment the Get Method is to be executed',
-          type: 'integer'
-        },
-      }}/>
-  </Accordion>
-</Accordions> */}
+| method              | description                      |
+| ------------------- | -------------------------------- |
+| runGetMethod (POST) | Run get method on smart contract |
 
 ---
+
 ## Send data
+
 All RPCs use the HTTP POST method.
 
-| method                       | description                          |
-| ---------------------------- | ------------------------------------ |
-| sendBoc                      | Send serialized boc file: fully packed and serialized external message to blockchain
-| sendBocReturnHash            | Send serialized boc file: fully packed and serialized external message to blockchain. The method returns message hash
-| sendQuery                    | Send query - unpacked external message. This method takes address, body and init-params (if any), packs it to external message and sends to network. All params should be boc-serialized
-| estimateFee                  | Estimate fees required for query processing. body, init-code and init-data accepted in serialized format (b64-encoded)
+| method            | description                                                                                                                                                                              |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sendBoc           | Send serialized boc file: fully packed and serialized external message to blockchain                                                                                                     |
+| sendBocReturnHash | Send serialized boc file: fully packed and serialized external message to blockchain. The method returns message hash                                                                    |
+| sendQuery         | Send query - unpacked external message. This method takes address, body and init-params (if any), packs it to external message and sends to network. All params should be boc-serialized |
+| estimateFee       | Estimate fees required for query processing. body, init-code and init-data accepted in serialized format (b64-encoded)                                                                   |

@@ -1,13 +1,28 @@
 ---
 title: Bitcoin Node RPC
-description: Bitcoin is the first decentralized cryptocurrency, and the first blockchain-based digital currency.
+description: Leverage the Bitcoin RPC API to seamlessly interact with the BTC blockchain for sending transactions, fetching balances, retrieving block data, and integrating with Bitcoin’s decentralized ledger.
+bg: linear-gradient(0deg, rgba(255, 168, 0, 0.2), rgba(255, 168, 0, 0.2))
 ---
-import BtcIndexSamples from '../refs/btc_index_samples.mdx';
+
+import NodeEndpoints from "@/lib/components/node-endpoints"
+
+<NodeEndpoints
+  endpoints={{
+    Mainnet: {
+      "JSON-RPC": "https://api.chain-rpc.online/bitcoin",
+      Index: "https://api.chain-rpc.online/bitcoin-index",
+    },
+    Testnet: {
+      "JSON-RPC": "https://api.chain-rpc.online/bitcoin-testnet",
+    },
+  }}
+/>
 
 JSON RPC Endpoint: https://api.chain-rpc.online/bitcoin \
 Our platform supports all original Bitcoin JSON-RPC methods, except Wallet RPCs.
 
 curl example
+
 ```bash
 curl https://api.chain-rpc.online/bitcoin \
   -X POST -H "Content-Type: application/json" \
@@ -38,43 +53,46 @@ blockchain queries.
 
 API Endpoint - https://api.chain-rpc.online/bitcoin-index
 
-| **Method Name**                                      | **Short Description**                                                                                                                                                     |
-|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `block/$HASH`                     | Returns the details of the block with the given hash
-| `block/$HEIGHT`                   | Returns the details of the block at the given height
-| `block/header/$HASH`              | Returns the details of the block header with the given hash
-| `block/header/$HEIGHT`            | Returns the details of the block header at the given height
-| `blocks/tip`                      | Returns basic details about the chain tip
-| `tx/$TXID`                        | Returns the details of the transaction with the given txid
-| `tx/volume/24h`                   | Returns the total output of all transactions over the last 24 hours
-| `blockchain/coins`                | Returns the current supply of Bitcoin. Includes estimated values on slower devices or before UTXO Set snapshot is loaded
-| `blockchain/utxo-set`             | Returns the latest UTXO Set snapshot. Warning: Can be very slow depending on hardware and index configurations
-| `blockchain/next-halving`         | Returns details about the next, upcoming Bitcoin halving
-| `address/$ADDRESS`                | Returns a summary of data related to the given address, including transactions if an Address API is configured
-| `xyzpub/$XPUB`                    | Returns details for the specified extended public key, including related keys and addresses
-| `xyzpub/addresses/$XPUB`          | Returns a list of addresses derived from the given extended public key
-| `xyzpub/txids/$XPUB`              | Returns a list of transaction IDs associated with the given extended public key
-| `mining/hashrate`                 | Returns the network hash rate estimated over various timeframes
-| `mining/diff-adj-estimate`        | Returns the current estimate for the next difficulty adjustment as a percentage
-| `mining/next-block`               | Returns a summary of the estimated next block to be mined, based on `getblocktemplate`
-| `mining/next-block/txids`         | Returns a list of transaction IDs included in the estimated next block to be mined
-| `mining/next-block/includes/$TXID`| Returns whether the specified transaction ID is included in the estimated next block
-| `mining/miner-summary`            | Provides a summary of miner-specific activity over a specified timeframe
-| `mempool/count`                   | Returns the number of transactions in Bitcoin Core's mempool
-| `mempool/summary`                 | Returns a summary of Bitcoin Core's mempool information
-| `mempool/fees`                    | Returns recommended fee rates in sats/vB for different confirmation timeframes
-| `price`                           | Returns the price of 1 BTC in various currencies (USD, EUR, GBP, XAU)
-| `price/marketcap`                 | Returns the market cap of Bitcoin in various currencies
-| `price/sats`                      | Returns the price of 1 unit of specified currencies (e.g., USD) in satoshis
-| `quotes/all`                      | Returns the full curated list of Bitcoin quotes
-| `quotes/$INDEX`                   | Returns a Bitcoin quote based on the given index
-| `quotes/random`                   | Returns a random Bitcoin quote from the curated list
-| `holidays/all`                    | Returns the full curated list of Bitcoin holidays
-| `holidays/today`                  | Returns the Bitcoin holidays celebrated on the current day
-| `holidays/$DAY`                   | Returns the Bitcoin holidays celebrated on a specified date, in various formats (e.g., `yyyy-MM-DD`)
-| `version`                         | Returns the API version
+| **Method Name**                    | **Short Description**                                                                                                    |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `block/$HASH`                      | Returns the details of the block with the given hash                                                                     |
+| `block/$HEIGHT`                    | Returns the details of the block at the given height                                                                     |
+| `block/header/$HASH`               | Returns the details of the block header with the given hash                                                              |
+| `block/header/$HEIGHT`             | Returns the details of the block header at the given height                                                              |
+| `blocks/tip`                       | Returns basic details about the chain tip                                                                                |
+| `tx/$TXID`                         | Returns the details of the transaction with the given txid                                                               |
+| `tx/volume/24h`                    | Returns the total output of all transactions over the last 24 hours                                                      |
+| `blockchain/coins`                 | Returns the current supply of Bitcoin. Includes estimated values on slower devices or before UTXO Set snapshot is loaded |
+| `blockchain/utxo-set`              | Returns the latest UTXO Set snapshot. Warning: Can be very slow depending on hardware and index configurations           |
+| `blockchain/next-halving`          | Returns details about the next, upcoming Bitcoin halving                                                                 |
+| `address/$ADDRESS`                 | Returns a summary of data related to the given address, including transactions if an Address API is configured           |
+| `xyzpub/$XPUB`                     | Returns details for the specified extended public key, including related keys and addresses                              |
+| `xyzpub/addresses/$XPUB`           | Returns a list of addresses derived from the given extended public key                                                   |
+| `xyzpub/txids/$XPUB`               | Returns a list of transaction IDs associated with the given extended public key                                          |
+| `mining/hashrate`                  | Returns the network hash rate estimated over various timeframes                                                          |
+| `mining/diff-adj-estimate`         | Returns the current estimate for the next difficulty adjustment as a percentage                                          |
+| `mining/next-block`                | Returns a summary of the estimated next block to be mined, based on `getblocktemplate`                                   |
+| `mining/next-block/txids`          | Returns a list of transaction IDs included in the estimated next block to be mined                                       |
+| `mining/next-block/includes/$TXID` | Returns whether the specified transaction ID is included in the estimated next block                                     |
+| `mining/miner-summary`             | Provides a summary of miner-specific activity over a specified timeframe                                                 |
+| `mempool/count`                    | Returns the number of transactions in Bitcoin Core's mempool                                                             |
+| `mempool/summary`                  | Returns a summary of Bitcoin Core's mempool information                                                                  |
+| `mempool/fees`                     | Returns recommended fee rates in sats/vB for different confirmation timeframes                                           |
+| `price`                            | Returns the price of 1 BTC in various currencies (USD, EUR, GBP, XAU)                                                    |
+| `price/marketcap`                  | Returns the market cap of Bitcoin in various currencies                                                                  |
+| `price/sats`                       | Returns the price of 1 unit of specified currencies (e.g., USD) in satoshis                                              |
+| `quotes/all`                       | Returns the full curated list of Bitcoin quotes                                                                          |
+| `quotes/$INDEX`                    | Returns a Bitcoin quote based on the given index                                                                         |
+| `quotes/random`                    | Returns a random Bitcoin quote from the curated list                                                                     |
+| `holidays/all`                     | Returns the full curated list of Bitcoin holidays                                                                        |
+| `holidays/today`                   | Returns the Bitcoin holidays celebrated on the current day                                                               |
+| `holidays/$DAY`                    | Returns the Bitcoin holidays celebrated on a specified date, in various formats (e.g., `yyyy-MM-DD`)                     |
+| `version`                          | Returns the API version                                                                                                  |
 
 The following example demonstrates how to query a Bitcoin address using our
 indexed method:
 
-<BtcIndexSamples/>
+```bash
+curl https://api.chain-rpc.online/bitcoin-index/address/34rng4QwB5pHUbGDJw1JxjLwgEU8TQuEqv \
+-H "X-API-Key: test"
+```

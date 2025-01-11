@@ -26,6 +26,7 @@ Author: pumbur <pumbur@pumbur.net>
 .hljs {
   background: #1a1717;
   color: #aaa;
+  overflow: scroll;
 }
 
 .hljs-subst {

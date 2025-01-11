@@ -1,22 +1,46 @@
 import { Box, Container, Typography } from "@mui/joy"
-import '../../app/github-dark.css'
-import '../../app/global.css'
-import CodeCopy from './code.copy'
+import "../../app/github-dark.css"
+import "../../app/global.css"
+import CodeCopy from "./code-copy"
+import { Footer } from "./footer"
 
 export function MDXWrapper({
   children,
   frontmatter,
+  LeftComponent,
 }: {
   children: React.ReactNode
   frontmatter: any
+  LeftComponent?: React.ReactNode
 }) {
   const { title, description, lastUpdated } = frontmatter
 
-
   return (
-    <>
+    <Box
+      sx={{
+        backgroundImage: frontmatter.bg,
+        display: "grid",
+        gridTemplateColumns: {
+          sm: "1fr",
+          md: "1fr 7fr 1fr",
+        },
+      }}
+    >
+      <Box
+        position={"sticky"}
+        sx={{
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          display: {
+            xs: "none",
+            md: "flex",
+          },
+        }}
+      >
+        {LeftComponent}
+      </Box>
+
       <Container maxWidth="md">
-        <CodeCopy/>
+        <CodeCopy />
         <Box my={3} mb={6}>
           <Typography sx={{ my: 2 }} level="h1">
             {title}
@@ -33,8 +57,21 @@ export function MDXWrapper({
             Last updated: {lastUpdated}
           </Typography>
         )}
+        <Footer />
       </Container>
-    </>
+
+      <Box
+        position={"sticky"}
+        sx={{
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          display: {
+            xs: "none",
+            md: "flex",
+          },
+        }}
+      >
+      </Box>
+    </Box>
   )
 }
 
@@ -49,8 +86,10 @@ export function generateMetadataFactory(subDirectory: string) {
     if (!slug) {
       slug = "index"
     }
-    
-    const { frontmatter } = (await import(`@/content/${subDirectory}/${slug}.mdx`)) as any
+
+    const { frontmatter } = (await import(
+      `@/content/${subDirectory}/${slug}.mdx`
+    )) as any
     return {
       title: frontmatter.title,
       description: frontmatter.description,

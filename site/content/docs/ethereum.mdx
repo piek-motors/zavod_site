@@ -1,11 +1,25 @@
 ---
 title: Ethereum Node RPC
-description: Ethereum is second decentralized public blockchain platform enabling secure, peer-to-peer transactions, 
-  Turing-complete smart-contract functionality for decentralized apps (dApps) without central authority.  
+description: Use the Ethereum RPC API to power interactions with the ETH blockchain. Easily send transactions, query balances, explore block details, and develop scalable Web3 applications.
+bg: linear-gradient(0deg, rgba(47, 42, 186, 0.2), rgba(47, 42, 186, 0.2))
 ---
-JSON RPC Endpoint: https://api.chain-rpc.online/ethereum \
-This page groups methods by their function to simplify navigation and understanding 
-for developers working with Ethereum.
+
+import NodeEndpoints from "@/lib/components/node-endpoints"
+
+<NodeEndpoints
+  endpoints={{
+    Mainnet: {
+      "JSON-RPC": "https://api.chain-rpc.online/ethereum",
+    },
+    Sepolia: {
+      "JSON-RPC": "https://api.chain-rpc.online/ethereum-sepolia",
+      WS: "wss://sepolia.infura.io/ws/v3/f4f5f6f7f8f9f0f1f2f3f4f5f6f7f8f9f0f1f2f3f4f5f6f7f8f9",
+    },
+    Holesky: {
+      "JSON-RPC": "https://api.chain-rpc.online/ethereum-holesky",
+    },
+  }}
+/>
 
 <b>curl example</b>
 ```bash
@@ -22,10 +36,16 @@ curl https://api.chain-rpc.online/ethereum \
 ```
 
 **Refferences** \
-[JSON-RPC doc](https://ethereum.org/en/developers/docs/apis/json-rpc/#json-rpc-methods)
+[Explore detailed JSON-RPC Documentation](https://ethereum.org/en/developers/docs/apis/json-rpc/#json-rpc-methods)
 
 ---
-## Getting Block Information
+
+This page groups methods
+by their function to simplify navigation and understanding for developers working
+with Ethereum.
+
+## Block Information
+
 Retrieve data about specific blocks in the Ethereum blockchain. Block data is foundational for accessing transactions, timestamps, miner information, and more. Use these methods to obtain in-depth details about a block by its hash, number, or transaction count.
 
 - **eth_blockNumber** - Returns the latest block number in the chain.
@@ -36,7 +56,8 @@ Retrieve data about specific blocks in the Ethereum blockchain. Block data is fo
 
 ---
 
-## Reading Transactions
+## Transaction Queries
+
 Retrieve detailed transaction data for specific addresses, whether they’re user accounts or smart contracts. These methods provide transaction insights that are critical for analyzing transaction history and validating data.
 
 - **eth_getTransactionByHash** - Finds a transaction using its hash.
@@ -48,6 +69,7 @@ Retrieve detailed transaction data for specific addresses, whether they’re use
 ---
 
 ## Writing Transactions & Executing EVM Code
+
 Enables developers to send ETH, write on-chain data, and interact with Ethereum smart contracts. These are essential for deploying contracts, managing assets, and performing EVM (Ethereum Virtual Machine) executions.
 
 - **eth_sendRawTransaction** - Sends a signed transaction to the network.
@@ -55,7 +77,8 @@ Enables developers to send ETH, write on-chain data, and interact with Ethereum 
 
 ---
 
-## Accessing Account Information
+## Account Information
+
 Retrieve information related to Ethereum accounts, including balance, stored code, and data. Useful for checking account status, balance, and on-chain data storage.
 
 - **eth_getCode** - Fetches the bytecode of a smart contract.
@@ -68,6 +91,7 @@ Retrieve information related to Ethereum accounts, including balance, stored cod
 ---
 
 ## Event Logs
+
 Event logs are records of specific actions within smart contracts, such as transfers or ownership changes. These methods allow you to monitor and retrieve log entries related to particular events.
 
 - **eth_getLogs** - Retrieves event logs from the blockchain.
@@ -81,6 +105,7 @@ Event logs are records of specific actions within smart contracts, such as trans
 ---
 
 ## Chain Information
+
 Retrieve details about the Ethereum network, including chain ID, protocol version, and network status. This information is essential for ensuring compatibility with different network configurations.
 
 - **eth_chainId** - Returns the unique ID of the Ethereum chain.
@@ -90,7 +115,8 @@ Retrieve details about the Ethereum network, including chain ID, protocol versio
 
 ---
 
-## Accessing Uncle Blocks
+## Uncle Blocks
+
 Uncle blocks are blocks that were initially valid but ultimately replaced by another block. These methods allow you to gather information about uncle blocks, which can offer insight into block validation and network reorganization.
 
 - **eth_getUncleCountByBlockHash** - Counts uncle blocks by parent block hash.
@@ -101,6 +127,7 @@ Uncle blocks are blocks that were initially valid but ultimately replaced by ano
 ---
 
 ## Gas Estimation
+
 Gas estimation methods provide information on gas prices and fees, which are crucial for developers to estimate transaction costs and ensure transactions are processed promptly.
 
 - **eth_estimateGas** - Estimates the gas required for a transaction.
@@ -108,12 +135,3 @@ Gas estimation methods provide information on gas prices and fees, which are cru
 - **eth_feeHistory** - Provides historical gas fee data.
 - **eth_maxPriorityFeePerGas** - Suggests a priority fee for prompt transaction processing.
 - **eth_createAccessList** - Generates access lists for transactions to optimize gas usage.
-
----
-
-## Web3 Client Interaction
-These Web3 methods are designed for general client interaction and network configuration, allowing for client and version verification.
-
-- **web3_clientVersion** - Shows the version of the client.
-- **web3_sha3** - Computes the Keccak-256 (SHA3) hash of input data.
-
