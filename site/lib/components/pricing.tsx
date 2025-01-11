@@ -44,7 +44,7 @@ export default function Pricing() {
         <PlanCard title="Free" price="" info={free} />
         <PlanCard
           title="Startup"
-          price="from $30/10M requests"
+          price="from $50/1M requests"
           info={startup}
         />
         <PlanCard title="Dedicated" price="from $400/month" info={dedicated} />

@@ -19,7 +19,6 @@ export default function Sidenav({ hideContent }: { hideContent?: boolean }) {
           fontWeight: 600,
           p: 3,
           width: "100%",
-          height: "100%",
           maxWidth: 300,
           position: "sticky",
           top: 0,

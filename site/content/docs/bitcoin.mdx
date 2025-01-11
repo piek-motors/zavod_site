@@ -18,10 +18,9 @@ import NodeEndpoints from "@/lib/components/node-endpoints"
   }}
 />
 
-JSON RPC Endpoint: https://api.chain-rpc.online/bitcoin \
 Our platform supports all original Bitcoin JSON-RPC methods, except Wallet RPCs.
 
-curl example
+Example
 
 ```bash
 curl https://api.chain-rpc.online/bitcoin \
@@ -34,7 +33,7 @@ curl https://api.chain-rpc.online/bitcoin \
 ```
 
 **Refferences** \
-[JSON-RPC doc](https://developer.bitcoin.org/reference/rpc/index.html)
+[Bitcoin JSON-RPC Documentation](https://developer.bitcoin.org/reference/rpc/index.html)
 
 ---
 
@@ -51,7 +50,13 @@ allowing developers to access critical account data with ease. This approach
 improves performance and reduces the overhead typically associated with raw
 blockchain queries.
 
-API Endpoint - https://api.chain-rpc.online/bitcoin-index
+The following example demonstrates how to query a Bitcoin address using our
+indexed method:
+
+```bash
+curl https://api.chain-rpc.online/bitcoin-index/address/34rng4QwB5pHUbGDJw1JxjLwgEU8TQuEqv \
+-H "X-API-Key: test"
+```
 
 | **Method Name**                    | **Short Description**                                                                                                    |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -88,11 +93,3 @@ API Endpoint - https://api.chain-rpc.online/bitcoin-index
 | `holidays/today`                   | Returns the Bitcoin holidays celebrated on the current day                                                               |
 | `holidays/$DAY`                    | Returns the Bitcoin holidays celebrated on a specified date, in various formats (e.g., `yyyy-MM-DD`)                     |
 | `version`                          | Returns the API version                                                                                                  |
-
-The following example demonstrates how to query a Bitcoin address using our
-indexed method:
-
-```bash
-curl https://api.chain-rpc.online/bitcoin-index/address/34rng4QwB5pHUbGDJw1JxjLwgEU8TQuEqv \
--H "X-API-Key: test"
-```

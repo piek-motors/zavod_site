@@ -1,6 +1,6 @@
 'use client'
 import { Footer } from '@/lib/components/footer'
-import MetaMaskIcon from '@/lib/metamask-icon'
+import MetaMaskIcon from '@/lib/svgs/metamask-icon'
 import Box from '@mui/joy/Box'
 import Button from '@mui/joy/Button'
 import Stack from '@mui/joy/Stack'

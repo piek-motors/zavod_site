@@ -9,7 +9,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: ({ children }) => (
       <Typography sx={{ lineHeight, my: 2 }}>{children}</Typography>
     ),
-    hr: ({ children }) => <Divider />,
+    hr: ({ children }) => <Divider sx={{
+      my: '2em'
+    }} />,
     li: ({ children }) => <li style={{ lineHeight }}>{children}</li>,
     tr: ({ children }) => <tr>{children}</tr>,
     td: ({ children }) => <td style={{ padding: '5px 5px' }}>{children}</td>,

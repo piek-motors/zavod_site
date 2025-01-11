@@ -1,4 +1,5 @@
 import { Box, Tab, Table, TabList, TabPanel, Tabs, Typography } from "@mui/joy"
+import { CopyButton } from "./code-copy"
 
 type NetworkEndpoints = {
   [chain: string]: {
@@ -12,7 +13,7 @@ export default function NodeEndpoints({
   endpoints: NetworkEndpoints
 }) {
   return (
-    <Box >
+    <Box>
       <Tabs sx={{ mb: 2, borderRadius: 12, overflow: "hidden" }}>
         <TabList>
           {Object.keys(endpoints).map((chain, idx) => (
@@ -30,9 +31,19 @@ export default function NodeEndpoints({
             </Typography>
             <Table
               sx={{
-                py: 1, 
+                py: 1,
                 width: "auto",
                 fontSize: "1rem",
+                ".copybtn": {
+                  display: "flex",
+                  opacity: 0,
+                  transitionDuration: "100ms",
+                },
+                "tr:hover": {
+                  ".copybtn": {
+                    opacity: 1,
+                  },
+                },
               }}
             >
               <tbody>
@@ -41,6 +52,11 @@ export default function NodeEndpoints({
                     <td>{protocol}</td>
                     <td>
                       <div>{endpoints[chain][protocol]}</div>
+                    </td>
+                    <td className="copybtn">
+                      <CopyButton
+                        textToCopy={endpoints[chain][protocol]}
+                      />
                     </td>
                   </tr>
                 ))}

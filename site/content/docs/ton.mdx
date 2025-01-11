@@ -3,22 +3,24 @@ title: TON Node RPC
 description: Access the TON RPC API to interact with the blockchain, send transactions, check balances, and retrieve blocks or other critical data. Simplify integration with fast and reliable connectivity to the TON network.
 ---
 
-JSON RPC Endpoint: https://api.chain-rpc.online/ton/jsonRPC \
-REST API Endpoint: https://api.chain-rpc.online/ton/${methodName}
+import NodeEndpoints from "@/lib/components/node-endpoints"
 
-Basically TON node provides several protocols for communicating with the TON blockchain network:
+<NodeEndpoints
+  endpoints={{
+    Mainnet: {
+      "JSON-RPC": "https://api.chain-rpc.online/ton",
+      "REST API": "https://api.chain-rpc.online/ton/${methodName}",
+    },
+  }}
+/>
 
-- REST API over HTTPS
-- JSON-RPC over HTTPS
-- Abstract Datagram Network Layer (ADNL) - serves as a low-level communication protocol for transmitting data between nodes and is responsible for routing messages and transactions through the decentralized network.
-  Its basic purpose is to allow nodes (network participants) to communicate directly with one another efficiently, securely, and anonymously.
-  It operates primarily over UDP (IPv4, with future support for IPv6) and optionally falls back to TCP if UDP is unavailable.
+<b>REST API Example</b>
 
-<b>curl REST API example</b>
-```bash curl https://api.chain-rpc.online/ton/getConsensusBlock \ -H "X-API-Key:
-test" ```
+```bash
+curl https://api.chain-rpc.online/ton/getConsensusBlock -H "X-API-Key: test"
+```
 
-<b>curl JSON RPC example</b> \
+<b>JSON-RPC Example</b> \
 All methods in the API are available through JSON-RPC 2.0 protocol. 
 ```bash
 curl https://api.chain-rpc.online/ton/jsonRPC \
@@ -28,10 +30,10 @@ curl https://api.chain-rpc.online/ton/jsonRPC \
     "method": "getConsensusBlock"
 }'
 ```
-**Refferences** \
-[REST API doc](https://toncenter.com/api/v2) \
-[Client SDK](https://docs.ton.org/v3/guidelines/dapps/apis-sdks/sdk) \
-[Blockchain doc](https://ton-blockchain.github.io/docs)
+**References** \
+[REST API Documentation](https://toncenter.com/api/v2) \
+[Client SDK Documentation](https://docs.ton.org/v3/guidelines/dapps/apis-sdks/sdk) \
+[TON Blockchain Documentation](https://ton-blockchain.github.io/docs)
 
 ---
 
@@ -54,7 +56,7 @@ All RPCs use the HTTP GET method.
 | getBlockHeader                | Get metadata of a given block                            |
 | getOutMsgQueueSizes           | Get info with current sizes of messages queues by shards |
 
-{/* <BlockSamples/> */}
+---
 
 ## Account
 
@@ -73,6 +75,8 @@ All RPCs use the HTTP GET method.
 | getTokenData                  | Get NFT or Jetton information                                                                                                                                                                                         |
 | detectAddress                 | Get all possible address forms                                                                                                                                                                                        |
 
+---
+
 ## Transaction
 
 All RPCs use the HTTP GET method.
@@ -85,6 +89,8 @@ All RPCs use the HTTP GET method.
 | tryLocateTx             | Locate outcoming transaction of destination address by incoming message                   |
 | tryLocateResultTx       | Same as previous. Locate outcoming transaction of destination address by incoming message |
 | tryLocateSourceTx       | Locate incoming transaction of source address by outcoming message                        |
+
+---
 
 ## Blockchain Configuration
 

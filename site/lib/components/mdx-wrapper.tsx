@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/joy"
 import "../../app/github-dark.css"
 import "../../app/global.css"
-import CodeCopy from "./code-copy"
+import CodeSampleCopy from "./code-copy"
 import { Footer } from "./footer"
 
 export function MDXWrapper({
@@ -40,7 +40,7 @@ export function MDXWrapper({
       </Box>
 
       <Container maxWidth="md">
-        <CodeCopy />
+        <CodeSampleCopy />
         <Box my={3} mb={6}>
           <Typography sx={{ my: 2 }} level="h1">
             {title}

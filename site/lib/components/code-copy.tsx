@@ -1,7 +1,35 @@
 "use client"
-import { useEffect } from "react"
+import { Box, IconButton, Typography } from "@mui/joy"
+import { useEffect, useState } from "react"
+import CopyIcon from "../svgs/copy"
 
-export default function CodeCopy() {
+export function CopyButton({ textToCopy }: { textToCopy: string }) {
+  const [copied, setCopied] = useState(false)
+
+  return (
+    <IconButton
+      size="sm"
+      color={copied ? "success" : "neutral"}
+      variant="plain"
+      onClick={(e) => {
+        setCopied(true)
+        const timeout = setTimeout(() => {
+          setCopied(false)
+          clearTimeout(timeout)
+        }, 3000)
+
+        navigator.clipboard.writeText(textToCopy)
+      }}
+    >
+      <Box display={"flex"} width={16} ml={1}>
+        <CopyIcon />
+      </Box>
+      <Typography px={1}>{!copied ? "Copy" : "Copied"}</Typography>
+    </IconButton>
+  )
+}
+
+export default function CodeSampleCopy() {
   useEffect(() => {
     const codeBlocks = document.querySelectorAll("pre code")
 
