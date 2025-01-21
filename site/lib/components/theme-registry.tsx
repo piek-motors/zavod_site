@@ -3,22 +3,11 @@
 import createCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
 import { CssBaseline } from "@mui/joy"
-import { CssVarsProvider, extendTheme } from "@mui/joy/styles"
+import { CssVarsProvider } from "@mui/joy/styles"
 import { useServerInsertedHTML } from "next/navigation"
 import React from "react"
+import { baseTheme } from '../../app/theme'
 
-const baseTheme = extendTheme({
-  colorSchemes: {
-    dark: {
-      palette: {
-        background: {
-          body: "#231f20",
-          surface: "#1a1717"
-        },
-      },
-    },
-  },
-})
 
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902

@@ -4,4 +4,27 @@ description: Connect to the Solana RPC API for seamless integration with the SOL
 bg: linear-gradient(0deg, rgba(93, 204, 154, 0.2), rgba(93, 204, 154, 0.2))
 ---
 
-JSON RPC Endpoint: https://api.chain-rpc.online/solana \
+import NodeEndpoints from "@/lib/components/node-endpoints"
+
+<NodeEndpoints
+  endpoints={{
+    Mainnet: {
+      "JSON-RPC": "https://api.chain-rpc.online/solana",
+    },
+  }}
+/>
+
+**Example**
+
+```bash
+curl https://api.chain-rpc.online/solana \
+  -X POST -H "Content-Type: application/json" \
+  -H "x-api-key: test" \
+  -d '{ "jsonrpc": "2.0", "id": 1,
+    "method": "getBalance",
+    "params": ["83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri", { "commitment": "finalized" }]
+}'
+```
+
+**References** \
+[Solana JSON-RPC Documentation](https://solana.com/docs/rpc/http)

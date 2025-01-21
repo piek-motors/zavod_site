@@ -1,29 +1,26 @@
-import { generateMetadataFactory, MDXWrapper } from "@/lib/components/mdx-wrapper"
+import {
+  createMetadataFactory,
+  MDXWrapper,
+} from "@/lib/components/mdx-wrapper"
 
-export const generateMetadata = generateMetadataFactory('blog')
+export const generateMetadata = createMetadataFactory("blog")
+type paramsType = Promise<{ slug: string }>
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
-  const slug = (await params).slug
+export default async function Page(props: { params: paramsType }) {
+  const { slug } = await props.params
   const { default: Post, frontmatter } = await import(
     `@/content/blog/${slug}.mdx`
   )
-  console.log(frontmatter)
 
   return (
-    <MDXWrapper
-     frontmatter={frontmatter}
-    >
+    <MDXWrapper frontmatter={frontmatter}>
       <Post />
     </MDXWrapper>
   )
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return [{ slug: "stablecoin-risks" }]
 }
 
-export const dynamicParams = true
+export const dynamicParams = false

@@ -1,12 +1,12 @@
 import {
-  generateMetadataFactory,
+  createMetadataFactory,
   MDXWrapper,
 } from "@/lib/components/mdx-wrapper"
 import Sidenav from "@/lib/components/sidenav"
 import fs from "fs"
 import path from "path"
 // Metadata setup
-export const generateMetadata = generateMetadataFactory("docs")
+export const generateMetadata = createMetadataFactory("docs")
 
 export default async function Page({
   params,
@@ -31,7 +31,7 @@ export function generateStaticParams() {
   const slugs = files.map((file) => file.replace(".mdx", ""))
 
   // return [{ slug: "stablecoin-risks" }]
-  return slugs.map((slug) => ({ slug, data: "f" }))
+  return slugs.map((slug) => ({ slug }))
 }
 
 export const dynamicParams = false

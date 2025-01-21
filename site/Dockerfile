@@ -6,7 +6,6 @@ WORKDIR /app
 
 COPY ./package.json .
 COPY ./pnpm-lock.yaml .
-COPY ./source.config.ts .
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \ 
   npm install -g pnpm

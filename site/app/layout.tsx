@@ -1,6 +1,6 @@
 import Header from '@/lib/components/header'
 import type { ReactNode } from 'react'
-import ThemeRegistry from './theme-registry'
+import ThemeRegistry from '../lib/components/theme-registry'
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

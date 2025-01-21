@@ -1,8 +1,8 @@
-import { generateMetadataFactory, MDXWrapper } from "@/lib/components/mdx-wrapper"
+import { createMetadataFactory, MDXWrapper } from "@/lib/components/mdx-wrapper"
 import Sidenav from '@/lib/components/sidenav'
 
 // Metadata setup
-export const generateMetadata = generateMetadataFactory('docs')
+export const generateMetadata = createMetadataFactory('docs')
 
 export default async function Page({
   params,

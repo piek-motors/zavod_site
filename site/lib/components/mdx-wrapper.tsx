@@ -69,20 +69,17 @@ export function MDXWrapper({
             md: "flex",
           },
         }}
-      >
-      </Box>
+      ></Box>
     </Box>
   )
 }
 
+// After
+export type Params = Promise<{ slug: string }>
 // Metadata setup
-export function generateMetadataFactory(subDirectory: string) {
-  return async function generateMetadataLib({
-    params,
-  }: {
-    params: { slug: string }
-  }) {
-    let slug = params.slug
+export function createMetadataFactory(subDirectory: string) {
+  return async function generateMetadataLib({ params }: { params: Params }) {
+    let { slug } = await params
     if (!slug) {
       slug = "index"
     }
