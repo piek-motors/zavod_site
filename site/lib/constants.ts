@@ -4,3 +4,6 @@ export const Hour = 60 * Minute;
 export const Day = 24 * Hour;
 export const Week = 7 * Day;
 export const Month = 30 * Day;
+
+/** Domain name */
+export const dn = "chain-rpc.online"
