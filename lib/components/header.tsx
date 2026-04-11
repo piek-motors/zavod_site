@@ -32,9 +32,6 @@ const DescktopeHeader = () => (
     <LinkButton href="/">
       <Typography fontWeight={700}>Завод ПЭК</Typography>
     </LinkButton>
-    <LinkButton href="/docs">Услуги</LinkButton>
-    {/* <LinkButton href="/blog">Blog</LinkButton> */}
-
     <Box sx={{ display: "flex", gap: 2, ml: "auto" }}>
       <LinkButton href="/contact-us">Контакт</LinkButton>
     </Box>
