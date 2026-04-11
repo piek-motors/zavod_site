@@ -1,23 +1,4 @@
-.md-table {
-  width: 100%;
-  border-collapse: collapse; /* Ensure borders don't double up */
-}
-.md-table th {
-  border-bottom: 1px solid #7d7c7c70; /* Add a thinner border for table rows */
-  text-align: left;
-  padding: 5px;
-  font-weight: 800;
-}
-
-.md-table td {
-  border-bottom: 1px solid #7d7c7c70; /* Add a thinner border for table rows */
-  padding: 8px; /* Optional: Add some padding for better spacing */
-}
-/* remove border for last row */
-.md-table tr:last-child td {
-  border-bottom: none;
-}
-.md-table a {
-  /* color: inherit; */
-  /* text-decoration: none; */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
 }

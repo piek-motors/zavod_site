@@ -7,20 +7,16 @@ export default function Header() {
   return (
     <header>
       <Container>
-        <DescktopeHeader />
-        <MobileHeader />
+        <DescktopHeader />
       </Container>
     </header>
   )
 }
 
-const DescktopeHeader = () => (
+const DescktopHeader = () => (
   <Box
     sx={{
-      display: {
-        xs: "none",
-        sm: "flex",
-      },
+      display: 'flex',
       alignItems: "center",
       p: 1,
       gap: {
@@ -33,7 +29,7 @@ const DescktopeHeader = () => (
       <Typography fontWeight={700}>Завод ПЭК</Typography>
     </LinkButton>
     <Box sx={{ display: "flex", gap: 2, ml: "auto" }}>
-      <LinkButton href="/contact-us">Контакт</LinkButton>
+      <LinkButton href="/contact">Контакт</LinkButton>
     </Box>
   </Box>
 )

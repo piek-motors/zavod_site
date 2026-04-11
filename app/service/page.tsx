@@ -1,8 +1,7 @@
 import { createMetadataFactory, MDXWrapper } from "@/lib/components/mdx-wrapper"
-import Sidenav from '@/lib/components/sidenav'
 
 // Metadata setup
-export const generateMetadata = createMetadataFactory('docs')
+export const generateMetadata = createMetadataFactory('service')
 
 export default async function Page({
   params,
@@ -11,11 +10,11 @@ export default async function Page({
 }) {
   const slug = (await params).slug
   const { default: Post, frontmatter } = (await import(
-    `@/content/docs/index.mdx`
+    `@/content/service/index.mdx`
   )) as any
 
   return (
-    <MDXWrapper frontmatter={frontmatter} LeftComponent={<Sidenav />}>
+    <MDXWrapper frontmatter={frontmatter} LeftComponent={<></>}>
       <Post />
     </MDXWrapper>
   )

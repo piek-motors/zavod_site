@@ -1,8 +1,7 @@
-import { Box, Container,  Stack } from "@mui/joy"
+import { Container,  Stack } from "@mui/joy"
 import { Metadata } from "next"
 import HomeContent from "@/content/home.mdx"
 import { Footer } from "@/lib/components/footer"
-import Sidenav from "@/lib/components/sidenav"
 
 export const metadata: Metadata = {
   title: "Контрактное производство и металлообработка на ЧПУ | ООО ПЭК",
@@ -14,16 +13,15 @@ export default function HomePage() {
   return (
     <main>
       <Stack direction={'row'}>
-      <Sidenav/>
       <Container maxWidth='md'>
-        <Box
+        <Stack
           id="home"
           sx={{
              my: 4,
           }}
         >
             <HomeContent />
-        </Box>
+        </Stack>
         <Footer />
       </Container>
       </Stack>
