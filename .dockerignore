@@ -1,12 +1,12 @@
 node_modules
 .git
 .gitignore
+.vscode
+.qwen
 *.md
+!README.md
 dist
 test
-**/node_modules
-**/dist
-**/test
 .idea
 *.log
 *.spec.ts
@@ -14,4 +14,10 @@ test
 .next
 .source
 deploy.sh
+deploy-simple.sh
 Dockerfile
+docker-compose*.yml
+.env*.local
+coverage
+.vscode-test
+out

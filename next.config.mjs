@@ -6,6 +6,13 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   reactStrictMode: true,
   output: "standalone",
+  // Add build ID for cache busting across deployments
+  generateBuildId: async () => {
+    return `${Date.now()}`;
+  },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
 }
 
 const withMDX = createMDX({
