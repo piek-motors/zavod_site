@@ -30,7 +30,7 @@ const DescktopeHeader = () => (
     }}
   >
     <LinkButton href="/">
-      <Typography fontWeight={700}>Chain RPC</Typography>
+      <Typography fontWeight={700}>Завод ПЭК</Typography>
     </LinkButton>
     <LinkButton href="/docs">Услуги</LinkButton>
     {/* <LinkButton href="/blog">Blog</LinkButton> */}
