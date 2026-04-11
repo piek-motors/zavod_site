@@ -6,7 +6,7 @@
     "build": "next build",
     "dev": "next dev",
     "check": "tsc --noEmit",
-    "start": "node .next/standalone/server.js"
+    "start": "bun .next/standalone/server.js"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
@@ -34,6 +34,7 @@
     "autoprefixer": "^10.4.27",
     "jest": "^30.3.0",
     "ts-jest": "^29.4.9",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "@types/bun": "latest"
   }
 }
