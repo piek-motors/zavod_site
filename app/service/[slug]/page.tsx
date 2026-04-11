@@ -20,7 +20,7 @@ export default async function Page({
   )) as any
 
   return (
-    <MDXWrapper frontmatter={frontmatter} LeftComponent={<></>}>
+    <MDXWrapper frontmatter={frontmatter}>
       <Post />
     </MDXWrapper>
   )
