@@ -31,17 +31,9 @@ export default function Sidenav({ hideContent }: { hideContent?: boolean }) {
             href={`/docs/${chain}`}
             style={{ textDecoration: "none" }}
           >
-            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-              <img
-                src={`/chains/${chain.toLowerCase()}.svg`}
-                alt={chain}
-                width="22"
-                height="22"
-              />
               <Typography sx={{ ':hover': { textDecoration: "underline" } }}>
                 {CapitalizeFirstLetter(chain)}
               </Typography>
-            </Box>
           </Link>
         ))}
       </Stack>

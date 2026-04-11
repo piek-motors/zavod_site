@@ -1,5 +1,4 @@
 import { Footer } from "@/lib/components/footer"
-import Pricing from "@/lib/components/pricing"
 import { Box, Button, Container, Divider, Stack, Typography } from "@mui/joy"
 import { Metadata } from "next"
 import Link from "next/link"
@@ -93,7 +92,6 @@ export default function HomePage() {
             </Link>
           </Box>
           <Divider />
-          <Pricing />
         </Box>
         <Footer />
       </Container>

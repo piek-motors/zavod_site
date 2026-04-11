@@ -1,6 +1,5 @@
 import { Box, Container, Typography } from "@mui/joy"
 import "../../app/global.css"
-import CodeSampleCopy from "./code-copy"
 import { Footer } from "./footer"
 
 export function MDXWrapper({
@@ -39,7 +38,6 @@ export function MDXWrapper({
       </Box>
 
       <Container maxWidth="md">
-        <CodeSampleCopy />
         <Box my={3} mb={6}>
           <Typography sx={{ my: 2 }} level="h1">
             {title}
