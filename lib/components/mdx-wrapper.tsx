@@ -1,5 +1,4 @@
 import { Box, Container, Typography } from "@mui/joy"
-import "../../app/github-dark.css"
 import "../../app/global.css"
 import CodeSampleCopy from "./code-copy"
 import { Footer } from "./footer"

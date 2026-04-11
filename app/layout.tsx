@@ -35,9 +35,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           minHeight: '100vh',
         }}
       >
-        <Header/>
         <ThemeRegistry options={{ key: 'joy' }}>
-            {children}
+          <Header/>
+          {children}
         </ThemeRegistry>
       </body>
     </html>

@@ -1,25 +1,23 @@
 import createMDX from "@next/mdx";
-import rehypeHighlight from 'rehype-highlight';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkGfm from 'remark-gfm';
-import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
-const withMDX = createMDX({
-  // Add markdown plugins here, as desired
-  options: {
-    jsx: true,
-    remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
-    rehypePlugins: [rehypeHighlight]
-  }
-})
+
 /** @type {import('next').NextConfig} */
-const config = {
+const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   reactStrictMode: true,
-  experimental: {
-    // mdxRs: true,
-  },
   output: "standalone",
 }
 
-export default withMDX(config)
+const withMDX = createMDX({
+  options: {
+    jsx: true,
+    remarkPlugins: [
+      'remark-frontmatter',
+      'remark-mdx-frontmatter',
+      'remark-gfm',
+    ],
+    rehypePlugins: [],
+  },
+})
+
+export default withMDX(nextConfig)

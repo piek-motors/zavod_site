@@ -6,7 +6,6 @@ import { CssBaseline } from "@mui/joy"
 import { CssVarsProvider } from "@mui/joy/styles"
 import { useServerInsertedHTML } from "next/navigation"
 import React from "react"
-import { baseTheme } from '../../app/theme'
 
 
 // This implementation is from emotion-js
@@ -58,8 +57,7 @@ export default function ThemeRegistry(props: any) {
   return (
     <CacheProvider value={cache}>
       <CssVarsProvider
-        defaultMode="dark"
-        theme={baseTheme}
+        defaultMode="light"
         disableNestedContext
       >
         <CssBaseline />
