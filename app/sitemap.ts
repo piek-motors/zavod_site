@@ -4,7 +4,7 @@ import type { MetadataRoute } from 'next'
 import path from "path"
 
 // read all files in the content/docs directory
-const files = fs.readdirSync(path.join(process.cwd(), "content/services"))
+const files = fs.readdirSync(path.join(process.cwd(), "content/service"))
 const services = files
   .map((file) => file.replace(".mdx", ""))
   .filter((slug) => slug !== "index")
