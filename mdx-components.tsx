@@ -7,6 +7,10 @@ const lineHeight = 1.6
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     p: ({ children }) => <Typography>{children}</Typography>,
+    h1: ({ children }) => <Typography level="h1">{children}</Typography>,
+    h2: ({ children }) => <Typography level="h2">{children}</Typography>,
+    h3: ({ children }) => <Typography level="h3">{children}</Typography>,
+    h4: ({ children }) => <Typography level="h4">{children}</Typography>,
     hr: ({ children }) => (
       <Divider
         sx={{
