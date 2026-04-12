@@ -1,39 +1,48 @@
-FROM oven/bun:1-alpine AS deps
-# Add libc6-compat for native dependencies
-RUN apk add --no-network --no-cache libc6-compat
+# --- Этап 1: Установка зависимостей ---
+FROM node:20-alpine AS deps
+# libc6-compat нужен для корректной работы некоторых нативных библиотек
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package.json bun.lockb* ./
-# Explicitly install sharp for image optimization speed
-RUN bun install --frozen-lockfile
-RUN bun add sharp 
+# Копируем файлы манифестов
+COPY package.json package-lock.json* ./
 
-FROM oven/bun:1-alpine AS builder
+# Используем ci (clean install) для гарантии идентичности зависимостей
+RUN npm ci
+
+# --- Этап 2: Сборка ---
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Отключаем телеметрию
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN bun run build
 
-FROM oven/bun:1-alpine AS runner
+# Сборка приложения
+RUN npm run build
+
+# --- Этап 3: Runner (Финальный образ) ---
+FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV HOSTNAME="0.0.0.0"
+ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
 
-# Create user
+# Создаем непривилегированного пользователя
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Standalone mode needs these specific folders to be fast
+# Копируем только необходимые артефакты из standalone режима
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
+
 EXPOSE 3000
 
-# Run with Bun's high-performance runtime
-CMD ["bun", "server.js"]
+# Запуск через Node
+CMD ["node", "server.js"]
