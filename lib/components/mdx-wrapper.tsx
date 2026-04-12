@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from "@mui/joy"
+import { BackgroundImageSetter } from "./background-image-setter"
 import "../../app/global.css"
 
 export function MDXWrapper({
@@ -8,16 +9,18 @@ export function MDXWrapper({
   children: React.ReactNode
   frontmatter: any
 }) {
-  const { title, description } = frontmatter
+  const { title, description, bg } = frontmatter
+
   return (
-    <Box
+    <>
+      <BackgroundImageSetter bg={bg} />
+      <Box
       sx={{
-        backgroundImage: frontmatter.bg,
         pb: 5,
       }}
     >
       <Container maxWidth="md">
-        <Box my={3} mb={6}>
+        <Box my={3}>
           <Typography sx={{ my: 2 }} level="h1">
             {title}
           </Typography>
@@ -26,23 +29,6 @@ export function MDXWrapper({
         {children}
       </Container>
     </Box>
+    </>
   )
-}
-
-// After
-export type Params = Promise<{ slug: string }>
-// Metadata setup
-export function createMetadataFactory(subDirectory: string) {
-  return async function generateMetadataLib({ params }: { params: Params }) {
-    let { slug } = await params
-    if (!slug) {
-      slug = "index"
-    }
-
-    const { frontmatter } = (await import(`@/content/${subDirectory}/${slug}.mdx`)) as any
-    return {
-      title: frontmatter.title,
-      description: frontmatter.description,
-    }
-  }
 }

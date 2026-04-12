@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <main>
       <Stack direction={"row"}>
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <Stack
             id="home"
             sx={{

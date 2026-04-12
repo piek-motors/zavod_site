@@ -1,6 +1,7 @@
 import fs from "fs"
 import path from "path"
-import { createMetadataFactory, MDXWrapper } from "@/lib/components/mdx-wrapper"
+import { createMetadataFactory } from "@/lib/mdx-metadata"
+import { MDXWrapper } from "@/lib/components/mdx-wrapper"
 // Metadata setup
 export const generateMetadata = createMetadataFactory("service")
 
