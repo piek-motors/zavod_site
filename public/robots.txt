@@ -1,6 +1,4 @@
 User-agent: Googlebot
-Disallow: /sign-in/
-Disallow: /contact-us/
 
 User-agent: *
 Allow: /
