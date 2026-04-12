@@ -15,20 +15,20 @@ export function MDXWrapper({
     <>
       <BackgroundImageSetter bg={bg} />
       <Box
-      sx={{
-        pb: 5,
-      }}
-    >
-      <Container maxWidth="md">
-        <Box my={3}>
-          <Typography sx={{ my: 2 }} level="h1">
-            {title}
-          </Typography>
-          <Typography level="body-lg">{description}</Typography>
-        </Box>
-        {children}
-      </Container>
-    </Box>
+        sx={{
+          pb: 5,
+        }}
+      >
+        <Container maxWidth="md">
+          <Box my={3}>
+            <Typography sx={{ my: 2 }} level="h1">
+              {title}
+            </Typography>
+            <Typography level="body-lg">{description}</Typography>
+          </Box>
+          {children}
+        </Container>
+      </Box>
     </>
   )
 }

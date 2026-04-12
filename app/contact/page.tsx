@@ -13,7 +13,7 @@ export default function ContactUs() {
           <Typography>
             Email:{" "}
             <Link level="body-md" px={0.5} type="email">
-              info@piek.ru
+              loseev@piek.ru
             </Link>
           </Typography>
           <Divider orientation="horizontal" />
