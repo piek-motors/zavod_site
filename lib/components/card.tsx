@@ -3,9 +3,9 @@ import Link from "next/link"
 import type { ReactNode } from "react"
 
 export const MyCard = (props: { title: string; link: string; children: ReactNode }) => (
-  <Card sx={{ minWidth: 0 }} variant="outlined">
+  <Card sx={{ minWidth: 0 }} variant="soft">
     <Link href={props.link} style={{ textDecoration: "none", color: "inherit" }}>
-      <Typography level="h3" px={1}>
+      <Typography level="h2" fontSize={20} color="primary">
         {props.title}
       </Typography>
       <Stack
@@ -34,4 +34,8 @@ export const CardWrapper = (props: { children: ReactNode }) => (
   >
     {props.children}
   </Box>
+)
+
+export const Title = (props: {children: ReactNode}) => (
+  <Typography level="h1" fontFamily={'monospace'} textAlign={'center'} lineHeight={1.0} mb={5}>{props.children}</Typography>
 )
