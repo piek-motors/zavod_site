@@ -7,7 +7,6 @@ import { CssVarsProvider } from "@mui/joy/styles"
 import { useServerInsertedHTML } from "next/navigation"
 import React from "react"
 
-
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
 export default function ThemeRegistry(props: any) {
@@ -23,7 +22,7 @@ export default function ThemeRegistry(props: any) {
       if (cache.inserted[serialized.name] === undefined) {
         inserted.push(serialized.name)
       }
-      // @ts-ignore
+      // @ts-expect-error
       return prevInsert(...args)
     }
     const flush = () => {
@@ -56,10 +55,7 @@ export default function ThemeRegistry(props: any) {
 
   return (
     <CacheProvider value={cache}>
-      <CssVarsProvider
-        defaultMode="light"
-        disableNestedContext
-      >
+      <CssVarsProvider defaultMode="light" disableNestedContext>
         <CssBaseline />
         {children}
       </CssVarsProvider>

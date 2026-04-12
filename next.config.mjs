@@ -1,4 +1,4 @@
-import createMDX from "@next/mdx";
+import createMDX from "@next/mdx"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,7 +8,7 @@ const nextConfig = {
   output: "standalone",
   // Add build ID for cache busting across deployments
   generateBuildId: async () => {
-    return `${Date.now()}`;
+    return `${Date.now()}`
   },
   typescript: {
     ignoreBuildErrors: false,
@@ -18,11 +18,7 @@ const nextConfig = {
 const withMDX = createMDX({
   options: {
     jsx: true,
-    remarkPlugins: [
-      'remark-frontmatter',
-      'remark-mdx-frontmatter',
-      'remark-gfm',
-    ],
+    remarkPlugins: ["remark-frontmatter", "remark-mdx-frontmatter", "remark-gfm"],
     rehypePlugins: [],
   },
 })

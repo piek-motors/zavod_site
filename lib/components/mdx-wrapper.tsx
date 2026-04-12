@@ -13,7 +13,7 @@ export function MDXWrapper({
     <Box
       sx={{
         backgroundImage: frontmatter.bg,
-        pb: 5
+        pb: 5,
       }}
     >
       <Container maxWidth="md">
@@ -21,9 +21,7 @@ export function MDXWrapper({
           <Typography sx={{ my: 2 }} level="h1">
             {title}
           </Typography>
-          <Typography level="body-lg">
-            {description}
-          </Typography>
+          <Typography level="body-lg">{description}</Typography>
         </Box>
         {children}
       </Container>
@@ -41,9 +39,7 @@ export function createMetadataFactory(subDirectory: string) {
       slug = "index"
     }
 
-    const { frontmatter } = (await import(
-      `@/content/${subDirectory}/${slug}.mdx`
-    )) as any
+    const { frontmatter } = (await import(`@/content/${subDirectory}/${slug}.mdx`)) as any
     return {
       title: frontmatter.title,
       description: frontmatter.description,

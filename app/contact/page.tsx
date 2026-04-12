@@ -1,17 +1,24 @@
-import {  Container, Typography } from '@mui/joy'
-import { Metadata } from 'next'
+import { Container, Divider, Link, Typography } from "@mui/joy"
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: 'Контакты | Завод ПЭК',
+  title: "Контакты | Завод ПЭК",
 }
 
 export default function ContactUs() {
   return (
     <>
       <main>
-        <Container maxWidth='sm'>
+        <Container maxWidth="sm">
           <Typography>
-            Email <Typography level='body-md' px={1} fontWeight={600}>info@piek.ru</Typography>
+            Email:{" "}
+            <Link level="body-md" px={0.5} type="email">
+              info@piek.ru
+            </Link>
+          </Typography>
+          <Divider orientation="horizontal" />
+          <Typography>
+            Адрес: Россия, 428037 Чувашская Республика, г. Чебоксары, пр. Машиностроителей, 17
           </Typography>
         </Container>
       </main>

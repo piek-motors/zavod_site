@@ -1,5 +1,5 @@
-import { Container,  Stack } from "@mui/joy"
-import { Metadata } from "next"
+import { Container, Stack } from "@mui/joy"
+import type { Metadata } from "next"
 import HomeContent from "@/content/home.mdx"
 import { Footer } from "@/lib/components/footer"
 
@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main>
-      <Stack direction={'row'}>
-      <Container maxWidth='md'>
-        <Stack
-          id="home"
-          sx={{
-             my: 4,
-          }}
-        >
+      <Stack direction={"row"}>
+        <Container maxWidth="md">
+          <Stack
+            id="home"
+            sx={{
+              my: 4,
+            }}
+          >
             <HomeContent />
-        </Stack>
-        <Footer />
-      </Container>
+          </Stack>
+          <Footer />
+        </Container>
       </Stack>
     </main>
   )

@@ -1,7 +1,7 @@
 import { Box, Button, Container, Typography } from "@mui/joy"
 import Link from "next/link"
-import React from "react"
-import { MobileHeader } from './mobile.header'
+import type React from "react"
+import { MobileHeader } from "./mobile.header"
 
 export default function Header() {
   return (
@@ -16,7 +16,7 @@ export default function Header() {
 const DescktopHeader = () => (
   <Box
     sx={{
-      display: 'flex',
+      display: "flex",
       alignItems: "center",
       p: 1,
       gap: {
@@ -34,14 +34,7 @@ const DescktopHeader = () => (
   </Box>
 )
 
-
-const LinkButton = ({
-  children,
-  href,
-}: {
-  children: React.ReactNode
-  href: string
-}) => {
+const LinkButton = ({ children, href }: { children: React.ReactNode; href: string }) => {
   return (
     <Link href={href}>
       <Button variant="plain" color="neutral">

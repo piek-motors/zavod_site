@@ -1,25 +1,16 @@
-import Header from '@/lib/components/header'
-import type { ReactNode } from 'react'
-import ThemeRegistry from '../lib/components/theme-registry'
+import type { ReactNode } from "react"
+import Header from "@/lib/components/header"
+import ThemeRegistry from "../lib/components/theme-registry"
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* <!-- Favicon --> */}
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon/favicon-96x96.png"
-          sizes="96x96"
-        />
+        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
         <link rel="shortcut icon" href="/favicon/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-title" content="Chain RPC" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <meta
@@ -30,13 +21,13 @@ export default function Layout({ children }: { children: ReactNode }) {
       </head>
       <body
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
         }}
       >
-        <ThemeRegistry options={{ key: 'joy' }}>
-          <Header/>
+        <ThemeRegistry options={{ key: "joy" }}>
+          <Header />
           {children}
         </ThemeRegistry>
       </body>
