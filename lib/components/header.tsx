@@ -6,7 +6,7 @@ import { MobileHeader } from "./mobile.header"
 export default function Header() {
   return (
     <header>
-      <Container>
+      <Container maxWidth='md'>
         <DescktopHeader />
       </Container>
     </header>

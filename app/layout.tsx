@@ -4,7 +4,7 @@ import ThemeRegistry from "../lib/components/theme-registry"
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ru" suppressHydrationWarning>
       <head>
         {/* <!-- Favicon --> */}
         <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -15,9 +15,9 @@ export default function Layout({ children }: { children: ReactNode }) {
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <meta
           name="keywords"
-          content="Blockchain, Node Provider, TON, Bitcoin, Ethereum, Monero, Blockchain as a Service, API Key, ChainRPC, Blockchain Network Access, Node Hosting"
+          content="металлообработка, контрактное производство, производство деталей, изготовление деталей, механическая обработка, ЧПУ обработка, CNC обработка, токарные работы, фрезерные работы, высокоточная обработка"
         />
-        <link rel="canonical" href="https://chain-rpc.online" />
+        <link rel="canonical" href="https://zavod.piek.ru" />
       </head>
       <body
         style={{
