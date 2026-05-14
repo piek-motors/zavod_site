@@ -14,9 +14,7 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
 
-# FIX: allow only unrs-resolver to run build scripts.
-# sharp is skipped — you have no images so its native binaries are unused.
-RUN echo 'onlyBuiltDependencies[]=unrs-resolver' >> .npmrc
+RUN pnpm config set strict-dep-builds false
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
     pnpm install --frozen-lockfile
