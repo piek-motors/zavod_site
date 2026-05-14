@@ -15,9 +15,11 @@ COPY package.json pnpm-lock.yaml* ./
 
 # Монтируем кэш pnpm для ускорения последующих сборок.
 # Кэш сохраняется между билдами в контексте Docker BuildKit.
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --frozen-lockfile --no-only-built-dependencies
+ENV PNPM_ONLY_BUILT_DEPENDENCIES=sharp,unrs-resolver
 
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+    pnpm install --frozen-lockfile
+    
 # --- Этап 2: Сборка ---
 FROM base AS builder
 WORKDIR /app
