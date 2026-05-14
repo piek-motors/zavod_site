@@ -2,8 +2,9 @@
 FROM node:26-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-# corepack ships with Node 26 — no extra install needed
-RUN corepack enable
+
+# Skip corepack and just grab pnpm
+RUN npm install -g pnpm
 
 # ─── Stage 2: deps ───────────────────────────────────────────────────────────
 FROM base AS deps
