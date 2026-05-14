@@ -1,7 +1,7 @@
 import fs from "fs"
+import type { Metadata } from "next"
 import path from "path"
 import { MDXWrapper } from "@/lib/components/mdx-wrapper"
-import { Metadata } from "next"
 
 // 1. Helper function to get MDX data (keeps it DRY)
 async function getServicePost(slug: string) {
@@ -49,10 +49,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const post = await getServicePost(slug)
   if (!post) return <div>Service not found</div>
 
-  const { Post, frontmatter } = post
+  const { Post } = post
 
   return (
-    <MDXWrapper frontmatter={frontmatter}>
+    <MDXWrapper>
       <Post />
     </MDXWrapper>
   )
