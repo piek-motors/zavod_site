@@ -1,8 +1,8 @@
 # ─── Stage 1: base ───────────────────────────────────────────────────────────
-FROM node:22-alpine AS base
+FROM node:26-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-# corepack ships with Node 22 — no extra install needed
+# corepack ships with Node 26 — no extra install needed
 RUN corepack enable
 
 # ─── Stage 2: deps ───────────────────────────────────────────────────────────
@@ -34,7 +34,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN pnpm run build
 
 # ─── Stage 4: runner ─────────────────────────────────────────────────────────
-FROM node:22-alpine AS runner
+FROM node:26-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
