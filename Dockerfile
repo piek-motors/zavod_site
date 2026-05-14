@@ -13,10 +13,10 @@ WORKDIR /app
 # Копируем только файлы зависимостей
 COPY package.json pnpm-lock.yaml* ./
 
+RUN echo "only-built-dependencies[]=sharp" > .npmrc && \
+    echo "only-built-dependencies[]=unrs-resolver" >> .npmrc
 # Монтируем кэш pnpm для ускорения последующих сборок.
 # Кэш сохраняется между билдами в контексте Docker BuildKit.
-ENV PNPM_ONLY_BUILT_DEPENDENCIES_ALL=true
-
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
     pnpm install --frozen-lockfile
     
