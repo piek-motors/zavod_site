@@ -4,7 +4,7 @@ import HomeContent from "@/content/home.mdx"
 import { Footer } from "@/lib/components/footer"
 
 export const metadata: Metadata = {
-  title: "Контрактное производство и металлообработка полного цикла в Чебоксарах",
+  title: "Контрактное производство и металлообработка полного цикла",
   description:
     "Изготовление сложных металлических деталей на ЧПУ: фрезерование до 5 осей, токарка, литье и термообработка — полный цикл",
 }

@@ -37,7 +37,7 @@ export const CardWrapper = (props: { children: ReactNode }) => (
 )
 
 export const Title = (props: { children: ReactNode }) => (
-  <Typography level="h1" fontFamily={"monospace"} textAlign={"center"} lineHeight={1.0} mb={5}>
+  <Typography level="h1" mb={5}>
     {props.children}
   </Typography>
 )

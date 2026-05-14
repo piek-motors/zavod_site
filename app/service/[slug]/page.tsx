@@ -1,14 +1,55 @@
 import fs from "fs"
 import path from "path"
-import { createMetadataFactory } from "@/lib/mdx-metadata"
 import { MDXWrapper } from "@/lib/components/mdx-wrapper"
-// Metadata setup
-export const generateMetadata = createMetadataFactory("service")
+import { Metadata } from "next"
+
+// 1. Helper function to get MDX data (keeps it DRY)
+async function getServicePost(slug: string) {
+  const decodedSlug = decodeURIComponent(slug)
+  try {
+    // Dynamic import of the MDX file
+    const post = await import(`@/content/service/${decodedSlug}.mdx`)
+    return {
+      Post: post.default,
+      frontmatter: post.frontmatter,
+    }
+  } catch (error) {
+    return null
+  }
+}
+
+// 2. Implementation of generateMetadata
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getServicePost(slug)
+
+  if (!post) {
+    return { title: "Post Not Found" }
+  }
+
+  const { title, description } = post.frontmatter
+
+  return {
+    title: title,
+    description: description,
+    // You can also add OpenGraph images here
+    openGraph: {
+      title: title,
+      description: description,
+    },
+  }
+}
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const rawSlug = (await params).slug
-  const slug = decodeURIComponent(rawSlug)
-  const { default: Post, frontmatter } = (await import(`@/content/service/${slug}.mdx`)) as any
+  const { slug } = await params
+  const post = await getServicePost(slug)
+  if (!post) return <div>Service not found</div>
+
+  const { Post, frontmatter } = post
 
   return (
     <MDXWrapper frontmatter={frontmatter}>
@@ -19,8 +60,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
 export function generateStaticParams() {
   const files = fs.readdirSync(path.join(process.cwd(), "content/service"))
-  const slugs = files.map((file) => file.replace(".mdx", ""))
-  return slugs.map((slug) => ({ slug }))
+  return files.map((file) => ({
+    slug: file.replace(".mdx", ""),
+  }))
 }
 
 export const dynamicParams = false

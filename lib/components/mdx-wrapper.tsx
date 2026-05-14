@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/joy"
+import { Box, Container } from "@mui/joy"
 import { BackgroundImageSetter } from "./background-image-setter"
 import "../../app/global.css"
 
@@ -9,25 +9,15 @@ export function MDXWrapper({
   children: React.ReactNode
   frontmatter: any
 }) {
-  const { title, description, bg } = frontmatter
-
   return (
     <>
-      <BackgroundImageSetter bg={bg} />
+      <BackgroundImageSetter bg={frontmatter.bg} />
       <Box
         sx={{
-          pb: 5,
+          py: 2,
         }}
       >
-        <Container maxWidth="md">
-          <Box my={3}>
-            <Typography sx={{ my: 2 }} level="h1">
-              {title}
-            </Typography>
-            <Typography level="body-lg">{description}</Typography>
-          </Box>
-          {children}
-        </Container>
+        <Container maxWidth="md">{children}</Container>
       </Box>
     </>
   )
