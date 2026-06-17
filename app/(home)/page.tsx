@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Контрактное производство и металлообработка полного цикла",
   description:
     "Изготовление сложных металлических деталей на ЧПУ: фрезерование до 5 осей, токарка, литье и термообработка — полный цикл",
+  alternates: { canonical: "/" },
 }
 
 export default function HomePage() {

@@ -1,6 +1,11 @@
+import type { Metadata } from "next"
 import type { ReactNode } from "react"
 import Header from "@/lib/components/header"
 import ThemeRegistry from "../lib/components/theme-registry"
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://zavod.piek.ru"),
+}
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -17,7 +22,6 @@ export default function Layout({ children }: { children: ReactNode }) {
           name="keywords"
           content="металлообработка, контрактное производство, производство деталей, изготовление деталей, механическая обработка, ЧПУ обработка, CNC обработка, токарные работы, фрезерные работы, высокоточная обработка"
         />
-        <link rel="canonical" href="https://zavod.piek.ru" />
       </head>
       <body
         style={{

@@ -36,7 +36,7 @@ export async function generateMetadata({
   return {
     title: title,
     description: description,
-    // You can also add OpenGraph images here
+    alternates: { canonical: `/service/${slug}` },
     openGraph: {
       title: title,
       description: description,

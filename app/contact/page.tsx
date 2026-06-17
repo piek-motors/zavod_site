@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Контакты | Завод ПЭК",
+  alternates: { canonical: "/contact" },
 }
 
 export default function ContactUs() {
